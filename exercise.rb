@@ -39,8 +39,23 @@ class Exercise
   # the "nth" term in the sequence
   # eg. the Fibonacci sequence up to 6 terms is (1, 1, 2, 3, 5, 8),
   # and the sum of its even numbers is (2 + 8) = 10
+  def self.fib(n)
+    if n <= 1
+      n
+    else
+      fib(n - 1) + fib(n - 2)
+    end
+  end
+
   def self.even_fibonacci(nth)
     # TODO: Implement this method
+    output = []
+    i = nth
+    nth.times do |num|
+      output << fib(i) if fib(i).even?
+      i -= 1
+    end
+    output.reduce(0, :+)
   end
 
 end
